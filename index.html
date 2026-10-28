@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1c1915">
+<title>C172P チェックリスト解説ノート（JA3946）</title>
+<style>
+:root {
+  --bg: #f4f0e6;
+  --ink: #1c1915;
+  --muted: #5e584e;
+  --card: #fffdf8;
+  --line: #e3dccb;
+  --green: #1d6b45;
+  --red: #9d2c2c;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #1c1915;
+  color: #f4f0e6;
+  padding: 12px 16px 0;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+header p {
+  margin: 4px 0 8px;
+  color: #d9d0c0;
+  font-size: 0.82rem;
+}
+input[type="search"] {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-family: inherit;
+  background: #fffdf8;
+  color: var(--ink);
+}
+nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin: 10px -16px 0;
+  padding: 8px 16px;
+  background: #2a261f;
+}
+nav a {
+  flex: 0 0 auto;
+  color: #f4f0e6;
+  text-decoration: none;
+  background: #3a342b;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+}
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8px 16px 48px;
+}
+section { scroll-margin-top: 160px; }
+h2 {
+  margin: 1.6rem 0 0.7rem;
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+h3 {
+  margin: 1.15rem 0 0.35rem;
+  font-size: 1.05rem;
+}
+p { margin: 0.55rem 0; }
+.byline { color: var(--muted); font-size: 0.9rem; }
+ul { margin: 0.4rem 0 0.8rem; padding-left: 1.2rem; }
+li { margin: 0.35rem 0; }
+figure { margin: 0.8rem 0; }
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: #fff;
+}
+.cards { display: flex; flex-direction: column; gap: 10px; margin: 0.6rem 0 1rem; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.card.alert { border-left-color: var(--red); }
+.card h3 { margin: 0 0 6px; font-size: 1rem; }
+.card p { margin: 6px 0 0; }
+.k {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+section.alert > h2 { color: var(--red); }
+footer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <h1>C172P　JA3946</h1>
+  <input id="q" type="search" placeholder="項目を検索（例: 燃料、静圧、マグネト）" enterkeyhint="search">
+  <nav><a href="#読み方と全体像">読み方と全体像</a><a href="#コックピットのどこを見るか">コックピットのどこを見るか</a><a href="#外部点検P-1--P-2">外部点検（P-1 / P-2）</a><a href="#場所が分かりにくい部品">場所が分かりにくい部品</a><a href="#エンジン始動までN-1">エンジン始動まで（N-1）</a><a href="#始動後地上滑走N-1">始動後〜地上滑走（N-1）</a><a href="#離陸前ランナップN-2">離陸前＝ランナップ（N-2）</a><a href="#離陸後巡航降下N-3">離陸後〜巡航〜降下（N-3）</a><a href="#進入着陸駐機N-4">進入〜着陸〜駐機（N-4）</a><a href="#緊急手順EM-1--EM-2">緊急手順（EM-1 / EM-2）</a><a href="#次回教官に確認したいこと">次回、教官に確認したいこと</a><a href="#出典">出典</a></nav>
+</header>
+<main>
+<p class="byline">Oct 22, 2026 · @Wataru Oshima　理解用。操作はクラブのチェックリストと教官が優先。</p>
+<p>チェックリストの役目は、記憶に頼らず「この機体は今飛べる状態か」を確かめ、異常に地上で気づくこと。JMGCのJA3946用チェックリスト（外部点検・通常手順・緊急手順）を、項目ごとに「何のため」と「どこを見るか・OKの基準」でフェーズ順に解説する。</p>
+<section id="読み方と全体像" class="">
+<h2>読み方と全体像</h2>
+<p>チェックリストは3種類。項目を丸暗記するより、「燃料・空気・点火・電気・操縦・見張り」のどの系統の確認かで見ると、順番の理由が分かって覚えやすい。</p>
+<div class="cards"><article class="card "><h3>外部点検（PRE-FLIGHT INSPECTION）</h3><p><span class="k">ページ</span>P-1, P-2</p><p><span class="k">いつやるか</span>乗る前に機体の周りを一周</p><p><span class="k">枠の色</span>緑</p></article><article class="card "><h3>通常手順</h3><p><span class="k">ページ</span>N-1〜N-4</p><p><span class="k">いつやるか</span>席に座ってから駐機まで</p><p><span class="k">枠の色</span>緑</p></article><article class="card "><h3>緊急手順</h3><p><span class="k">ページ</span>EM-1, EM-2</p><p><span class="k">いつやるか</span>エンジン故障・火災・電気の異常</p><p><span class="k">枠の色</span>赤</p></article></div>
+<h3>右側の言葉の意味</h3>
+<ul><li>SET：決められた位置・値に合わせる（Parking Brake SET＝ブレーキをかけた状態にする）</li></ul>
+<ul><li>CHECK：見て、正常か確かめる。「何が正常か」を知って初めて意味がある。このノートの「OKの基準」はそのためにある</li></ul>
+<ul><li>CHECK IN GREEN：計器の針が緑の帯の中にある</li></ul>
+<ul><li>（　）の空欄：その日・その課目の値を入れる。マニュアルの値では、上昇76KT・2400RPM、巡航95KT・2200RPM、降下1800RPM</li></ul>
+<ul><li>FINAL ITEM：滑走路に入る直前／最終進入で行う最後の数項目</li></ul>
+<h3>何度も出てくる項目には理由がある</h3>
+<ul><li>Fuel Selector Valve（燃料の切替弁）：外部点検から着陸前まで7回近く出てくる。燃料がエンジンに届かなくなることは、小型機のエンジン停止の代表的な原因だから。</li></ul>
+<ul><li>Mixture（混合比）：空気と燃料の割合。高度が上がると空気が薄くなり燃料が濃すぎる状態になる。マニュアルのルールは「3000ft（MSL）以下はFULL RICH」。</li></ul>
+<ul><li>Carb Heat（キャブレターヒート）：キャブレター（燃料と空気を混ぜる装置）は中で温度が下がり、湿った日は氷がつく（キャブアイス）。氷がつくと出力が落ちる。ルールは「2000RPM以下に絞るときはHOT、それ以上はCOLD、最終進入はゴーアラウンドに備えてCOLD」。</li></ul>
+<ul><li>CLEAR（周囲の安全）：プロペラに人を巻き込まない、他機とぶつからない。声に出すのは、自分と同乗者の両方に確認を共有するため。</li></ul>
+<ul><li>灯火・トランスポンダー：自分の存在を外に知らせる。大利根は成田の特別管制区のすぐ西にあるので特に大事。</li></ul>
+<p>緊急手順の最初の数項目は、紙を見ずにできることが求められる。マニュアルの不時着訓練でも、再始動は「チェックリストをメモリーで実施する」と書かれている。</p>
+</section>
+<section id="コックピットのどこを見るか" class="">
+<h2>コックピットのどこを見るか</h2>
+<p>チェックリストに出てくる計器とレバーの位置。写真はマニュアルのJA3946の計器板で、番号の位置は写真からの判断。次の訓練で実機と答え合わせを。</p>
+<figure><img src="img/01.jpg" alt="図"></figure>
+<div class="cards"><article class="card "><h3>1　時計</h3><p><span class="k">何が分かる・見るポイント</span>離着陸の時刻、飛行時間の目安</p><p><span class="k">主に出てくる場面</span>—</p></article><article class="card "><h3>2　サクションゲージ（負圧計）</h3><p><span class="k">何が分かる・見るポイント</span>4と10のジャイロを回す負圧ポンプが働いているか。緑ならOK</p><p><span class="k">主に出てくる場面</span>離陸前</p></article><article class="card "><h3>3　速度計</h3><p><span class="k">何が分かる・見るポイント</span>対気速度（KT）。白帯＝フラップを下げられる範囲、緑帯＝通常の範囲、赤線＝超えてはいけない速度</p><p><span class="k">主に出てくる場面</span>離陸・上昇・進入</p></article><article class="card "><h3>4　姿勢指示器</h3><p><span class="k">何が分かる・見るポイント</span>機首の上げ下げと傾き（人工の水平線）</p><p><span class="k">主に出てくる場面</span>地上滑走のジャイロ点検</p></article><article class="card "><h3>5　高度計</h3><p><span class="k">何が分かる・見るポイント</span>高度（ft）。右の小窓に気圧値（QNH）を入れる</p><p><span class="k">主に出てくる場面</span>始動後・進入</p></article><article class="card "><h3>6　VOR/ILS指示器</h3><p><span class="k">何が分かる・見るポイント</span>無線航法の針。場周訓練ではほぼ使わない</p><p><span class="k">主に出てくる場面</span>航法訓練</p></article><article class="card "><h3>7　燃料計（左・右タンク）</h3><p><span class="k">何が分かる・見るポイント</span>左右タンクの残量。地上では目視の方が確実</p><p><span class="k">主に出てくる場面</span>外部点検・始動・巡航・着陸前</p></article><article class="card "><h3>8　油温計・油圧計</h3><p><span class="k">何が分かる・見るポイント</span>エンジンオイルの温度と圧力。どちらも緑</p><p><span class="k">主に出てくる場面</span>始動直後・ランナップ・離陸後</p></article><article class="card "><h3>9　旋回計（ターンコーディネーター）</h3><p><span class="k">何が分かる・見るポイント</span>旋回の向きと、玉（ボール）で機体の滑り</p><p><span class="k">主に出てくる場面</span>地上滑走のジャイロ点検</p></article><article class="card "><h3>10　方位指示器（DG）</h3><p><span class="k">何が分かる・見るポイント</span>機首方位。時間とともにずれるので磁気コンパス（25）に合わせ直す</p><p><span class="k">主に出てくる場面</span>離陸前・巡航</p></article><article class="card "><h3>11　昇降計</h3><p><span class="k">何が分かる・見るポイント</span>上昇・降下の速さ（ft/分）</p><p><span class="k">主に出てくる場面</span>ゴーアラウンドの上昇確認</p></article><article class="card "><h3>12　回転計（タコメーター）</h3><p><span class="k">何が分かる・見るポイント</span>エンジン回転数（RPM）。手順の数値の大半はここを見る</p><p><span class="k">主に出てくる場面</span>ほぼ全場面</p></article><article class="card "><h3>13　電流計</h3><p><span class="k">何が分かる・見るポイント</span>発電機（オルタネーター）がバッテリーを充電しているか</p><p><span class="k">主に出てくる場面</span>エンジン計器点検</p></article><article class="card "><h3>14　LOW VOLTAGE灯</h3><p><span class="k">何が分かる・見るポイント</span>点いたら発電が止まり、バッテリーだけで動いている</p><p><span class="k">主に出てくる場面</span>緊急手順</p></article><article class="card "><h3>15　EGT（排気温度計）</h3><p><span class="k">何が分かる・見るポイント</span>ミクスチャーを絞るときの目安</p><p><span class="k">主に出てくる場面</span>3000ft以上の上昇・巡航</p></article><article class="card "><h3>16　無線機・オーディオパネル</h3><p><span class="k">何が分かる・見るポイント</span>交信周波数。大利根は130.7MHz</p><p><span class="k">主に出てくる場面</span>始動後</p></article><article class="card "><h3>17　トランスポンダー</h3><p><span class="k">何が分かる・見るポイント</span>管制レーダーに自機と高度を映す装置。SBY→ALT→OFF</p><p><span class="k">主に出てくる場面</span>始動後・離陸直前・着陸後</p></article><article class="card "><h3>18　ELTスイッチ</h3><p><span class="k">何が分かる・見るポイント</span>墜落時に自動で救難信号を出す装置。ARM＝待機</p><p><span class="k">主に出てくる場面</span>始動前</p></article><article class="card "><h3>19　ホッブスメーター</h3><p><span class="k">何が分かる・見るポイント</span>エンジン稼働時間の積算。ログブック記入の参考</p><p><span class="k">主に出てくる場面</span>—</p></article><article class="card "><h3>20　キャブヒート</h3><p><span class="k">何が分かる・見るポイント</span>引くとHOT。キャブレターに温かい空気を入れる</p><p><span class="k">主に出てくる場面</span>ほぼ全場面</p></article><article class="card "><h3>21　スロットル</h3><p><span class="k">何が分かる・見るポイント</span>押すとパワー増、引くと減</p><p><span class="k">主に出てくる場面</span>ほぼ全場面</p></article><article class="card "><h3>22　ミクスチャー（赤）</h3><p><span class="k">何が分かる・見るポイント</span>押し込みでFULL RICH。いっぱいに引くとIDLE CUT OFF＝エンジン停止</p><p><span class="k">主に出てくる場面</span>ほぼ全場面</p></article><article class="card "><h3>23　白いスイッチ類</h3><p><span class="k">何が分かる・見るポイント</span>灯火（ビーコン・着陸灯・タキシー灯・ストロボ等）。どれが何かは実機の表示で確認</p><p><span class="k">主に出てくる場面</span>始動・滑走・離着陸・駐機</p></article><article class="card "><h3>24　CONTROL LOCK注意札</h3><p><span class="k">何が分かる・見るポイント</span>「操縦輪ロックを外してから始動」の注意</p><p><span class="k">主に出てくる場面</span>外部点検</p></article><article class="card "><h3>25　磁気コンパス</h3><p><span class="k">何が分かる・見るポイント</span>電気も負圧も使わない方位計。10を合わせる基準</p><p><span class="k">主に出てくる場面</span>巡航</p></article></div>
+<p>写真に写っていないもの：マスタースイッチ・イグニッションキー・プライマー・サーキットブレーカー・フラップスイッチ（操縦輪の陰）、燃料切替弁とトリムホイール（座席の間）、外気温度計（風防の上部）。場所の目安は「場所が分かりにくい部品」の表にある。</p>
+</section>
+<section id="外部点検P-1--P-2" class="">
+<h2>外部点検（P-1 / P-2）</h2>
+<p>外部点検は「地上でしか見つけられない不具合を、決まった順路で漏れなく見る」作業。①キャビン→②尾翼→③④右翼→⑤機首→⑥〜⑧左翼と一周する。順路を固定するのは、毎回同じ順で見れば抜けが自然に気づけるから。</p>
+<figure><img src="img/02.png" alt="図"></figure>
+<h3>写真で見る場所</h3>
+<p>外部点検は、乗ってからでは見えない場所を、決まった順で見る作業。下の2枚の図が「どこか」、そのあとの写真が「近づくとどう見えるか」。図は172Pの標準的な位置で、写真はJA3946そのものではない。場所の考え方が同じ別の172を使っている。</p>
+<p>JA3946の製造番号は17274553。172Pの1981年型は17274010〜17275034なので、この機体は1981年型の範囲に入る。この年は着陸灯が機首にあり、左翼前縁に移るのは1982年型（17275035以降）。後から移していないかは、次に実機で確認する。</p>
+<figure><img src="img/03.png" alt="図"></figure>
+<p>図1　左側面。黄丸が点検箇所。静圧孔はドアの前、胴体の側面。オイル点検口はカウリングの上面。失速警報は左翼の前縁だけで、右翼にはない。</p>
+<figure><img src="img/04.png" alt="図"></figure>
+<p>図2　左翼の下面。前向きの管がピトー、曲がった細い管が燃料ベント。前縁の赤い開口が失速警報。サンプは胴体寄りの下面。燃料キャップは上面なので、この図の裏側。</p>
+<h3>尾翼（②）</h3>
+<figure><img src="img/05.jpg" alt="図"></figure>
+<p>昇降舵・方向舵・トリムタブ。大きな水平の面が昇降舵で、その後縁の内側がトリムタブ。垂直の面が方向舵。赤文字は元の写真の英語ラベル。席のトリムホイールが動かすのは昇降舵のタブで、方向舵の小さなタブは地上で曲げる調整用。手で全範囲なめらかに動き、ヒンジとボルトに欠けや緩みがないこと。外付けのガストロックが付いていれば外す。尾の下面のリングから係留ロープを外す。</p>
+<h3>右翼・左翼の燃料と主輪（④⑥）</h3>
+<figure><img src="img/06.jpg" alt="図"></figure>
+<p>燃料キャップの場所。人が乗っている主翼の上面が給油口で、左右とも同じ。キャップを開けて量を目で見て、飛行中に緩まないよう閉めてロックする。下に見えるタイヤが主輪。溝が残っていて、極端に潰れていないこと。ブレーキの油漏れは車輪の内側を別に見る。サンプの弁は翼の下面、胴体寄り（図2）。この写真には写っていない。</p>
+<h3>機首（⑤）</h3>
+<figure><img src="img/07.jpg" alt="図"></figure>
+<p>プロペラ、スピナー、着陸灯、吸気口。丸い灯が着陸灯、その上の黒い板がプロペラ、丸いカバーがスピナー。灯の下の暗い開口がキャブレターの吸気口。前縁の欠け、スピナーのヒビと緩み、レンズの割れ、吸気口の鳥の巣や布を見る。1981年型の172Pは灯がこの位置。タキシー灯が別に付いているかは実機で確認する。排気管（横に出る金属の管）は吸気口ではない。</p>
+<figure><img src="img/08.jpg" alt="図"></figure>
+<p>前輪の支柱とタイヤ。中央の銀色の筒が緩衝支柱で、クロムメッキの部分がいつもどおり出ていること。縮んでいると、着陸の衝撃を吸収できず、プロペラと地面の間隔も狭くなる。タイヤの緑の印はスリップマーク。ホイール側の印とずれていたら、空気が足りずタイヤがリムの上で回っている。人が持っている棒はトーバーで、点検項目ではない。左の錆びた管は排気管。機首の係留ロープが付いていれば外す。</p>
+<h3>静圧孔（⑤）</h3>
+<figure><img src="img/09.jpg" alt="図"></figure>
+<p>静圧孔の位置。風防の下、ドアより前、胴体左側面の青い帯の中にある小さな丸い穴。高度計・速度計・昇降計が、この穴から外の気圧を取っている。ふさがると3つとも狂う。帯の上にある白い突起は静圧孔ではない。写真は古い172（D-EALE）で、172Pも同じ側の、ドアの前。</p>
+<figure><img src="img/10.jpg" alt="図"></figure>
+<p>静圧孔を近づけたところ。円の中心の穴が開いていること。塗料、虫、テープでふさがっていないこと。周りの丸い膨らみはリベット。</p>
+<h3>左翼の前縁（⑦）</h3>
+<figure><img src="img/11.jpg" alt="図"></figure>
+<p>ピトー管。左翼の下面から前を向いた管で、速度計に風圧を伝える。カバーが付いていたら外して機内にしまい、穴が開いていること。この写真は1975年の172M（F-BXZQ）。管の位置は172Pと同じ。燃料ベントは別の、下に曲がった細い管で、この写真には写っていない（図2）。失速警報は左翼前縁の細い開口で、きれいな布を当てて吸うと機内のホーンが鳴る。やり方は教官に確認する。</p>
+<p>次にJA3946で足すと、この節がそろう写真は、サンプの弁、オイル点検口を開けた中（計量棒とストレーナーのノブ）、燃料ベント、失速警報の開口、係留リング、荷物室ドア、操縦輪のロック。計器まわりのスイッチは、前の番号付きの計器板写真で見る。</p>
+<h3>① CABIN（機内）</h3>
+<div class="cards"><article class="card "><h3>1 Documents SET</h3><p><span class="k">何のため</span>機体に積むべき書類（登録証明書・耐空証明書・搭載用航空日誌など）が揃っているか</p><p><span class="k">どこを見る・OKの基準</span>機内の書類入れ。自分の練習許可書・航空身体検査証明も携帯</p></article><article class="card "><h3>2 Parking Brake SET</h3><p><span class="k">何のため</span>点検中に機体が動かないように</p><p><span class="k">どこを見る・OKの基準</span>ブレーキがかかっている</p></article><article class="card "><h3>3 Control Wheel Lock REMOVE</h3><p><span class="k">何のため</span>駐機中、風で舵面がバタつかないよう操縦輪を固定しているピン。外し忘れると操縦できない</p><p><span class="k">どこを見る・OKの基準</span>操縦輪の根元のピンを抜く（地図24の注意札）</p></article><article class="card "><h3>4 Ignition S/W OFF</h3><p><span class="k">何のため</span>プロペラが不意に回らないように</p><p><span class="k">どこを見る・OKの基準</span>キーがOFF</p></article><article class="card "><h3>5 Avionics Master S/W OFF</h3><p><span class="k">何のため</span>次にマスターを入れるとき、無線機に余計な電気を流さない</p><p><span class="k">どこを見る・OKの基準</span>OFF</p></article><article class="card "><h3>6 Master S/W ON</h3><p><span class="k">何のため</span>燃料計を読む・ファンの音を確かめるために一時的に電気を入れる</p><p><span class="k">どこを見る・OKの基準</span>ON。下のWARNINGを参照</p></article><article class="card "><h3>7 Fuel Quantity Indicator CHECK</h3><p><span class="k">何のため</span>燃料計の指示を確認。あとで目視と突き合わせる</p><p><span class="k">どこを見る・OKの基準</span>地図7の左右の針</p></article><article class="card "><h3>8 Avionics Cooling Fan CHECK</h3><p><span class="k">何のため</span>無線機を冷やすファンが回っているか</p><p><span class="k">どこを見る・OKの基準</span>耳で確認：ファンの回る音</p></article><article class="card "><h3>9 Master S/W OFF</h3><p><span class="k">何のため</span>バッテリーを無駄に減らさない</p><p><span class="k">どこを見る・OKの基準</span>OFF</p></article><article class="card "><h3>10 Alternate Static Source CHECK OFF</h3><p><span class="k">何のため</span>予備の静圧源（機内の空気）を使うと高度計・速度計が少しずれる。普段は機外の静圧孔を使う</p><p><span class="k">どこを見る・OKの基準</span>ノブが押し込まれてOFF</p></article><article class="card "><h3>11 Fuel Selector Valve BOTH ON</h3><p><span class="k">何のため</span>左右両タンクから燃料が来る位置</p><p><span class="k">どこを見る・OKの基準</span>座席の間の床のセレクターがBOTH</p></article><article class="card "><h3>12 Baggage Door CHECK LOCK</h3><p><span class="k">何のため</span>飛行中に開かないように</p><p><span class="k">どこを見る・OKの基準</span>機体左後方の荷物室ドアが施錠</p></article></div>
+<p>WARNINGの意味：点火装置（マグネト）はバッテリーと無関係に、プロペラが回るだけで火花を出す。イグニッションOFFは「その火花をアースで止めている」だけなので、配線が緩むとOFFでもエンジンがかかる。だから常に「点火が生きている」前提で、プロペラ回転面に人を入れない。駐機時の「Ground Earth CHECK」はこのアースが効いているかの点検。</p>
+<h3>② EMPENNAGE（尾翼）</h3>
+<div class="cards"><article class="card "><h3>1 Rudder Gust Lock REMOVE</h3><p><span class="k">何のため</span>方向舵を固定する外付けロックを外す</p><p><span class="k">どこを見る・OKの基準</span>外れている</p></article><article class="card "><h3>2 Tail Tie-Down DISCONNECT</h3><p><span class="k">何のため</span>尾部を地面につなぐロープを外す</p><p><span class="k">どこを見る・OKの基準</span>外れている</p></article><article class="card "><h3>3 Control Surfaces CHECK FREE</h3><p><span class="k">何のため</span>昇降舵・方向舵が引っかからず動き、壊れていないか</p><p><span class="k">どこを見る・OKの基準</span>手で動かして全範囲なめらか。ヒンジ・ボルトに緩み・欠損がない</p></article></div>
+<h3>③ RIGHT WING（右翼）後縁 → ④ 右翼</h3>
+<div class="cards"><article class="card "><h3>③-1 Aileron CHECK FREE</h3><p><span class="k">何のため</span>補助翼（傾きを作る舵）が自由に動き、壊れていないか</p><p><span class="k">どこを見る・OKの基準</span>手で動かす。ヒンジと表面に凹み・ヒビがない</p></article><article class="card "><h3>④-1 Wing Tie-Down DISCONNECT</h3><p><span class="k">何のため</span>主翼を地面につなぐロープを外す</p><p><span class="k">どこを見る・OKの基準</span>外れている</p></article><article class="card "><h3>④-2 Main Wheel Tire CHECK</h3><p><span class="k">何のため</span>空気圧不足・摩耗・切り傷はパンクや滑走中の偏向の原因</p><p><span class="k">どこを見る・OKの基準</span>潰れ具合、溝、下地（コード）が見えていないか。ブレーキ周りの油漏れ</p></article><article class="card "><h3>④-3 Fuel Tank Sump Valve DRAIN</h3><p><span class="k">何のため</span>燃料に混じった水やゴミを抜く。水は燃料より重く底にたまり、エンジンに入ると止まる</p><p><span class="k">どこを見る・OKの基準</span>翼下面の排出弁からカップに採取。青色で透明、底に水玉やゴミがない。その日の最初と給油後に実施</p></article><article class="card "><h3>④-4 Fuel Quantity CHECK VISUAL</h3><p><span class="k">何のため</span>燃料計は誤差が大きい。目で量を確かめる</p><p><span class="k">どこを見る・OKの基準</span>給油口から覆いて量を確認</p></article><article class="card "><h3>④-5 Fuel Filler Cap SECURE</h3><p><span class="k">何のため</span>緩いと飛行中に燃料が吸い出される</p><p><span class="k">どこを見る・OKの基準</span>しっかり閉まっている</p></article></div>
+<h3>⑤ NOSE（機首）</h3>
+<div class="cards"><article class="card "><h3>1 Engine Oil CHECK min 5QT</h3><p><span class="k">何のため</span>オイル不足はエンジン焦き付きの原因</p><p><span class="k">どこを見る・OKの基準</span>カウリングの点検口を開け、計量棒で5クォート以上。キャップを締めて点検口を閉じる</p></article><article class="card "><h3>2 Fuel Strainer Drain CHECK</h3><p><span class="k">何のため</span>燃料系統で一番低い場所（ストレーナー）にたまる水・ゴミを抜く</p><p><span class="k">どこを見る・OKの基準</span>エンジン下側。サンプと同じ基準。その日の最初と給油後に実施</p></article><article class="card "><h3>3 Propeller and Spinner CHECK</h3><p><span class="k">何のため</span>小さな欠けからヒビが広がる。プロペラは最も力がかかる部品</p><p><span class="k">どこを見る・OKの基準</span>前縁の欠け・ヒビ、スピナー（先端カバー）の緩み・ヒビ</p></article><article class="card "><h3>4 Landing, Taxi Light CHECK</h3><p><span class="k">何のため</span>着陸灯・タキシー灯の状態</p><p><span class="k">どこを見る・OKの基準</span>レンズの割れ・汚れ。C172Pは製造年で機首か左翼前縁かが違う</p></article><article class="card "><h3>5 Carburetor Air Filter CHECK</h3><p><span class="k">何のため</span>エンジンの吸気口。詰まると出力が落ちる</p><p><span class="k">どこを見る・OKの基準</span>機首下部の吸気口に鳥の巣・ゴミがない</p></article><article class="card "><h3>6 Nose Wheel Strut CHECK</h3><p><span class="k">何のため</span>前輪の緩衝装置。縮んでいると着陸の衝撃が吸収できず、プロペラと地面の隙間も減る</p><p><span class="k">どこを見る・OKの基準</span>伸び具合がいつもどおりか、油漏れがないか</p></article><article class="card "><h3>7 Nose Tire CHECK</h3><p><span class="k">何のため</span>主輪と同じ</p><p><span class="k">どこを見る・OKの基準</span>空気圧・摩耗・切り傷</p></article><article class="card "><h3>8 Nose Tie-Down DISCONNECT</h3><p><span class="k">何のため</span>機首のロープを外す</p><p><span class="k">どこを見る・OKの基準</span>外れている</p></article><article class="card "><h3>9 Static Source CLEAN</h3><p><span class="k">何のため</span>静圧孔は高度計・速度計・昇降計に外の気圧を伝える穴。詰まると3つとも狂う</p><p><span class="k">どこを見る・OKの基準</span>胴体左側面の小さな穴。ゴミや虫で塞がっていない</p></article></div>
+<h3>⑥ LEFT WING → ⑦ 左翼前縁 → ⑧ 左翼後縁</h3>
+<p>⑥のタイヤ・サンプ・燃料目視・キャップ、⑧の補助翼は右翼と同じ。左翼にしかないのが⑦の3つ。</p>
+<div class="cards"><article class="card "><h3>⑦-1 Pitot Tube Cover REMOVE and CHECK</h3><p><span class="k">何のため</span>ピトー管は速度計に風圧を伝える管。カバーや虫で塞がると速度計が動かない</p><p><span class="k">どこを見る・OKの基準</span>左翼下面の前向きの管。カバーを外し、穴が開いている</p></article><article class="card "><h3>⑦-2 Fuel Tank Vent CHECK</h3><p><span class="k">何のため</span>タンクに空気を入れる通気管。詰まると燃料が流れずエンジンが止まる</p><p><span class="k">どこを見る・OKの基準</span>左翼下面の小さな管。詰まり・曲がりがない</p></article><article class="card "><h3>⑦-3 Stall Warning CHECK</h3><p><span class="k">何のため</span>失速が近いと鳴るホーンの空気取入口。C172は風圧式で電気を使わない</p><p><span class="k">どこを見る・OKの基準</span>左翼前縁の小さな開口。吸うとホーンが鳴る（やり方は教官に確認）</p></article><article class="card "><h3>⑦-4 Wing Tie-Down DISCONNECT</h3><p><span class="k">何のため</span>主翼のロープを外す</p><p><span class="k">どこを見る・OKの基準</span>外れている</p></article></div>
+<p>外部点検は、燃料（量・水・キャップ・通気）、空気の穴（ピトー・静圧・吸気・失速警報）、動くもの（舵面・車輪・プロペラ）、固定具（ロック・ロープ・カバー）の4種類を各場所で見ているだけ。この4つを頭に置くと、項目を忘れにくくなる。</p>
+</section>
+<section id="場所が分かりにくい部品" class="">
+<h2>場所が分かりにくい部品</h2>
+<p>地図の写真に写っていない部品と、外部点検で迷いやすい部品の場所の目安。ネットの写真はC172の新しい型（172R・172S）が多く、JA3946の172Pと場所や形が違うものがあるので、右の列に注意点を書いた。</p>
+<div class="cards"><article class="card "><h3>イグニッションスイッチ（キー）</h3><p><span class="k">場所の目安（C172P）</span>計器板の左下、操縦輪の陰。キーをOFF・R・L・BOTH・STARTに回す</p><p><span class="k">写真を見るときの注意</span>新しい型はキーの位置や形が違うことがある</p></article><article class="card "><h3>マスタースイッチ</h3><p><span class="k">場所の目安（C172P）</span>計器板の左下、赤い二連のスイッチ（BAT＝バッテリー、ALT＝発電機）</p><p><span class="k">写真を見るときの注意</span>LOW VOLTAGE手順の「Both Side」はこの二連の両方のこと</p></article><article class="card "><h3>プライマー</h3><p><span class="k">場所の目安（C172P）</span>計器板の下段にある引き出し式のノブ。押し込んで回すとロック</p><p><span class="k">写真を見るときの注意</span>燃料噴射式の172R・172Sにはない。正確な位置は実機で確認</p></article><article class="card "><h3>燃料切替弁</h3><p><span class="k">場所の目安（C172P）</span>座席の間の床。LEFT・BOTH・RIGHT・OFF</p><p><span class="k">写真を見るときの注意</span>172R・172Sは別に「FUEL SHUTOFF」ノブがある</p></article><article class="card "><h3>トリムホイール</h3><p><span class="k">場所の目安（C172P）</span>座席の間、燃料切替弁の上の縦回しのホイール。横の目盛りでTAKEOFF位置</p><p><span class="k">写真を見るときの注意</span>—</p></article><article class="card "><h3>オイル点検口</h3><p><span class="k">場所の目安（C172P）</span>カウリング（エンジンカバー）上面の小さな扉。開けると計量棒を兼ねた給油キャップがあり、回して抜いて目盛りを読む（5〜8クォート）</p><p><span class="k">写真を見るときの注意</span>扉の位置はエンジンや年式で少し違う。終わったらキャップと扉を閉めたか確認</p></article><article class="card "><h3>燃料ストレーナーの排出ノブ</h3><p><span class="k">場所の目安（C172P）</span>172Pではオイル点検口の中、計量棒の近くにあるノブを数秒引く。燃料はカウリングの下から出る</p><p><span class="k">写真を見るときの注意</span>172Sは機首下面の弁をカップで突いて採る方式で、写真と別物のことがある</p></article><article class="card "><h3>翼の燃料排出弁（サンプ）</h3><p><span class="k">場所の目安（C172P）</span>左右の主翼の下面、胴体寄りの小さな弁。サンプカップの棒で押し上げて採る</p><p><span class="k">写真を見るときの注意</span>新しい型は片翼に複数ある</p></article><article class="card "><h3>静圧孔</h3><p><span class="k">場所の目安（C172P）</span>機首の左側面、ドアの前あたりの小さな丸い穴</p><p><span class="k">写真を見るときの注意</span>小さいので、平らな金属板の中の穴を探す</p></article><article class="card "><h3>ピトー管</h3><p><span class="k">場所の目安（C172P）</span>左翼の下面、前向きに突き出た管</p><p><span class="k">写真を見るときの注意</span>カバー（赤い吹き流し付きが多い）を外したら、機内に収納</p></article><article class="card "><h3>燃料タンク通気管（ベント）</h3><p><span class="k">場所の目安（C172P）</span>左翼の下面、支柱の付け根あたりから下へ出た細い曲がった管</p><p><span class="k">写真を見るときの注意</span>ピトー管と間違えやすい。前向き＝ピトー、曲がった管＝ベント</p></article><article class="card "><h3>失速警報の取入口</h3><p><span class="k">場所の目安（C172P）</span>左翼前縁の小さな開口。きれいなハンカチを当てて吸うとホーンが鳴る</p><p><span class="k">写真を見るときの注意</span>—</p></article><article class="card "><h3>キャブレター吸気口（エアフィルター）</h3><p><span class="k">場所の目安（C172P）</span>機首の前面下側の吸気口</p><p><span class="k">写真を見るときの注意</span>—</p></article><article class="card "><h3>着陸灯・タキシー灯</h3><p><span class="k">場所の目安（C172P）</span>1981年型までは機首、1982年型からは左翼前縁</p><p><span class="k">写真を見るときの注意</span>JA3946の年式次第</p></article></div>
+<p>実機の写真を撮っておけば、計器板と同じように番号付きの地図にできる。</p>
+</section>
+<section id="エンジン始動までN-1" class="">
+<h2>エンジン始動まで（N-1）</h2>
+<p>始動前は「電気を全部切った状態で、体・燃料・操縦を整える」段階。始動は「燃料（Mixture・Primer）＋空気（Throttle・Carb Heat）＋火花（Ignition）」をそろえる作業だと思うと順番が腕に落ちる。</p>
+<h3>BEFORE STARTING ENGINE</h3>
+<div class="cards"><article class="card "><h3>1 Seat Belt &amp; Shoulder Harness FASTEN</h3><p><span class="k">何のため</span>体を固定する</p><p><span class="k">どこを見る・OKの基準</span>腰ベルトと肩ベルト。同乗者も</p></article><article class="card "><h3>2 Doors CLOSED &amp; LOCKED</h3><p><span class="k">何のため</span>滑走中・離陸時にドアが開くのを防ぐ</p><p><span class="k">どこを見る・OKの基準</span>両ドアのハンドルがロック位置</p></article><article class="card "><h3>3 Windows OPEN</h3><p><span class="k">何のため</span>始動時に外へ声をかけ、外の声も聞けるように（換気も兼ねる）</p><p><span class="k">どこを見る・OKの基準</span>窓が開いている</p></article><article class="card "><h3>4 Parking Brake SET</h3><p><span class="k">何のため</span>始動時の推力で機体が前に出ないように</p><p><span class="k">どこを見る・OKの基準</span>ブレーキがかかっている</p></article><article class="card "><h3>5 Master S/W OFF</h3><p><span class="k">何のため</span>この後の確認を電源OFFで行う</p><p><span class="k">どこを見る・OKの基準</span>OFF</p></article><article class="card "><h3>5 Ignition &amp; All Switches ALL OFF</h3><p><span class="k">何のため</span>始動時の電圧の揺れから機器を守り、予期せぬ作動を防ぐ</p><p><span class="k">どこを見る・OKの基準</span>キー・灯火・無線のスイッチがすべてOFF</p></article><article class="card "><h3>6 Circuit Breakers ALL IN</h3><p><span class="k">何のため</span>サーキットブレーカー＝電気のヒューズ。飛び出していたらどこかに異常があった印</p><p><span class="k">どこを見る・OKの基準</span>丸いボタンが全部押し込まれている</p></article><article class="card "><h3>7 Fuel Selector Valve BOTH ON</h3><p><span class="k">何のため</span>左右両タンクから燃料を供給</p><p><span class="k">どこを見る・OKの基準</span>座席の間の床でBOTH</p></article><article class="card "><h3>8 OAT (　) Degrees</h3><p><span class="k">何のため</span>外気温。始動のやり方（プライマー回数・暖機）、飛行性能、キャブアイスの判断材料</p><p><span class="k">どこを見る・OKの基準</span>風防上部の温度計を読んで記入</p></article><article class="card "><h3>9 ELT ARM</h3><p><span class="k">何のため</span>墜落時に自動で救難信号を出す待機状態。ONだと今まさに発信してしまう</p><p><span class="k">どこを見る・OKの基準</span>地図18のスイッチがARM</p></article><article class="card "><h3>10 FLT Controls FREE</h3><p><span class="k">何のため</span>操縦輪とラダーペダルが引っかからず動き、舵面が正しい向きに動くか</p><p><span class="k">どこを見る・OKの基準</span>操縦輪を左右・前後いっぱいに。窓から補助翼も見る（左に回すと左の補助翼が上がる）</p></article><article class="card "><h3>11 Trim Tab CHECK &amp; SET</h3><p><span class="k">何のため</span>トリム（操縦の力を軽くする装置）が動くか確認し、離陸位置に合わせる</p><p><span class="k">どこを見る・OKの基準</span>座席の間のトリムホイール。指示をTAKEOFFの印に</p></article></div>
+<h3>STARTING ENGINE</h3>
+<div class="cards"><article class="card "><h3>1 Out Side CLEAR</h3><p><span class="k">何のため</span>プロペラ周りに人や物がないか</p><p><span class="k">どこを見る・OKの基準</span>前後左右を見て、窓から「CLEAR」と大声で</p></article><article class="card "><h3>2 Master S/W ON</h3><p><span class="k">何のため</span>始動には電気が要る</p><p><span class="k">どこを見る・OKの基準</span>コール「MASTER SWITCH ON」</p></article><article class="card "><h3>3 Fuel Quantity CHECK</h3><p><span class="k">何のため</span>電源が入ったので燃料計で再確認</p><p><span class="k">どこを見る・OKの基準</span>地図7</p></article><article class="card "><h3>4 Mixture FULL RICH</h3><p><span class="k">何のため</span>始動には濃い混合気が要る</p><p><span class="k">どこを見る・OKの基準</span>地図22を奥まで押し込む</p></article><article class="card "><h3>5 Carb Heat COLD</h3><p><span class="k">何のため</span>HOTの空気はフィルターを通らない。地上でゴミを吸わないようCOLD</p><p><span class="k">どこを見る・OKの基準</span>地図20が押し込まれている</p></article><article class="card "><h3>6 Primer AS REQUIRED &amp; LOCKED</h3><p><span class="k">何のため</span>プライマーは燃料をシリンダーに直接送る手動ポンプ。ロックし忘れると燃料を吸い続け、回転が不安定になる</p><p><span class="k">どこを見る・OKの基準</span>回数は気温次第（教官の指示）。最後に押し込んでロック</p></article><article class="card "><h3>7 Throttle 1/4 INCH OPEN</h3><p><span class="k">何のため</span>始動に必要な少しの空気を入れる。開けすぎるとかかった瞬間に回転が上がりすぎる</p><p><span class="k">どこを見る・OKの基準</span>地図21を約6mm押す</p></article><article class="card "><h3>8 BCN Light ON</h3><p><span class="k">何のため</span>赤い点滅灯で「エンジンが回る」と周囲に知らせる</p><p><span class="k">どこを見る・OKの基準</span>ビーコンのスイッチON</p></article><article class="card "><h3>9 Ignition S/W START</h3><p><span class="k">何のため</span>スターターでエンジンを回す。始動前に「CLEAR」のコール</p><p><span class="k">どこを見る・OKの基準</span>かかったらキーから手を離す（BOTHに戻る）</p></article><article class="card "><h3>10 Oil Pressure CHECK IN GREEN</h3><p><span class="k">何のため</span>オイルが回らないとエンジンはすぐ壊れる</p><p><span class="k">どこを見る・OKの基準</span>地図8の油圧計。夏30秒・冬60秒以内に緑。上がらなければエンジン停止</p></article><article class="card "><h3>12 Throttle 1000RPM</h3><p><span class="k">何のため</span>暖機中の回転。暖機するなら1200RPM</p><p><span class="k">どこを見る・OKの基準</span>地図12</p></article><article class="card "><h3>13 Engine Instrument CHECK</h3><p><span class="k">何のため</span>油温・油圧・充電が正常か</p><p><span class="k">どこを見る・OKの基準</span>地図8と13</p></article><article class="card "><h3>14 Windows CLOSED</h3><p><span class="k">何のため</span>外との声のやり取りが終わったので閉める</p><p><span class="k">どこを見る・OKの基準</span>窓が閉まっている</p></article></div>
+</section>
+<section id="始動後地上滑走N-1" class="">
+<h2>始動後〜地上滑走（N-1）</h2>
+<p>始動後は「無線と計器を生かし、外とつながる」段階。地上滑走では、動き始めを使ってブレーキとジャイロ計器を点検する。</p>
+<h3>AFTER STARTING</h3>
+<div class="cards"><article class="card "><h3>1 Avionics Master S/W ON</h3><p><span class="k">何のため</span>始動時の電圧の揺れが終わったので、無線機に電気を入れる</p><p><span class="k">どこを見る・OKの基準</span>無線機の表示が点く</p></article><article class="card "><h3>2 Radio &amp; NAV Aids ON &amp; SET</h3><p><span class="k">何のため</span>交信の準備</p><p><span class="k">どこを見る・OKの基準</span>地図16。大利根フライトサービス130.7MHz、音量</p></article><article class="card "><h3>3 Transponder SBY</h3><p><span class="k">何のため</span>地上ではまだ電波を出さない待機状態</p><p><span class="k">どこを見る・OKの基準</span>地図17のつまみがSBY</p></article><article class="card "><h3>4 Altimeter SET (　in-Hg)</h3><p><span class="k">何のため</span>気圧値（QNH）を合わせ、高度計が正しい高度を示すようにする</p><p><span class="k">どこを見る・OKの基準</span>地図5の小窓に入れた後、針が飛行場の標高付近を指すか</p></article><article class="card "><h3>5 Taxi Clearance CONTACT Facility</h3><p><span class="k">何のため</span>大利根は管制塔がなく、フライトサービスから情報をもらい、自分で一方送信する</p><p><span class="k">どこを見る・OKの基準</span>「OHOTONE FLIGHT SERVICE, JA3946, at SPOT, request departure information」→「OHOTONE LOCAL JA3946, at SPOT, back track runway 07」</p></article><article class="card "><h3>6 Throttle CLOSE</h3><p><span class="k">何のため</span>輪止めを外す人がプロペラの近くに来るので、推力を最小に</p><p><span class="k">どこを見る・OKの基準</span>地図21を引いて最小</p></article><article class="card "><h3>7 Chocks OUT</h3><p><span class="k">何のため</span>車輪止めを外す</p><p><span class="k">どこを見る・OKの基準</span>外れたことを目で確認。コール「CHOCKS OUT」</p></article><article class="card "><h3>8 Parking Brake Release</h3><p><span class="k">何のため</span>動き出す準備</p><p><span class="k">どこを見る・OKの基準</span>解除されている</p></article></div>
+<h3>TAXI</h3>
+<div class="cards"><article class="card "><h3>1 Taxi Light ON</h3><p><span class="k">何のため</span>前方を照らし、周囲からも見えるように</p><p><span class="k">どこを見る・OKの基準</span>タキシー灯のスイッチON</p></article><article class="card "><h3>2 Brake CHECK</h3><p><span class="k">何のため</span>動き出してすぐブレーキが効くか確かめる。効かないと気づくのは早いほどよい</p><p><span class="k">どこを見る・OKの基準</span>数メートル進んだら軽く踏んで止まるか。動き始めのコールは「OUT SIDE CLEAR」</p></article><article class="card "><h3>3 Gyro Instrument CHECK</h3><p><span class="k">何のため</span>地上の旋回を使って、ジャイロ計器が正しく動くか確かめる</p><p><span class="k">どこを見る・OKの基準</span>左に曲がるとき：旋回計（9）は左を指し玉は右へ、方位指示器（10）とコンパス（25）は数字が減る、姿勢指示器（4）は傾かない。右はその逆</p></article></div>
+<p>マニュアルの地上滑走の目安：駐機場は歩く速さ、誘導路は走る速さ。曲がる前は「RIGHT（LEFT）CLEAR」、滑走路に入る前は「BASE FINAL CLEAR, RWY SIDE CLEAR」とコールする。</p>
+</section>
+<section id="離陸前ランナップN-2" class="">
+<h2>離陸前＝ランナップ（N-2）</h2>
+<p>ランナップは「空に上がってから壊れていると分かっても遅い部品」を、地上で1つずつ働かせて確かめる作業。山場は点火（マグネト）・キャブヒート・負圧・アイドルの4つで、どれも回転計（地図12）の針の動きで判定する。</p>
+<div class="cards"><article class="card "><h3>1 Parking Brake SET</h3><p><span class="k">何のため</span>回転を上げても機体が動かないように</p><p><span class="k">どこを見る・OKの基準</span>ブレーキがかかっている</p></article><article class="card "><h3>2 Out Side CLEAR</h3><p><span class="k">何のため</span>回転を上げると後ろに砂や石が飛ぶ</p><p><span class="k">どこを見る・OKの基準</span>後方に人・機体がいない</p></article><article class="card "><h3>3 Oil Temp CHECK IN GREEN</h3><p><span class="k">何のため</span>温まってから回転を上げる。冷えたままの高回転はエンジンを傷める</p><p><span class="k">どこを見る・OKの基準</span>地図8の油温が緑</p></article><article class="card "><h3>4 Throttle SET 1700RPM</h3><p><span class="k">何のため</span>点検用の決まった回転</p><p><span class="k">どこを見る・OKの基準</span>地図12で1700</p></article><article class="card "><h3>5 Magnetos CHECK</h3><p><span class="k">何のため</span>エンジンには独立した点火系統が2つある（1つ壊れても飛べるため）。片方ずつでも回るか確かめる</p><p><span class="k">どこを見る・OKの基準</span>キーを片側→BOTH→反対側→BOTH。片側で回転が少し落ちるのが正常。落ち幅150RPM以内、左右の差50RPM以内。全く落ちないのも異常（切れない点火を疑う）</p></article><article class="card "><h3>6 Carb Heat CHECK</h3><p><span class="k">何のため</span>キャブヒートが効くか。温かい空気は薄いので回転が下がるのが正常</p><p><span class="k">どこを見る・OKの基準</span>地図20を引くとRPMが下がり、戻すと元に戻る。下がった後に上がってきたら、既に氷がついていた印</p></article><article class="card "><h3>7 Suction Gage CHECK IN GREEN</h3><p><span class="k">何のため</span>姿勢指示器と方位指示器を回す負圧が出ているか</p><p><span class="k">どこを見る・OKの基準</span>地図2が緑</p></article><article class="card "><h3>8 Engine Instrument CHECK</h3><p><span class="k">何のため</span>回転を上げた状態で油温・油圧・充電が正常か</p><p><span class="k">どこを見る・OKの基準</span>地図8が緑、地図13が充電側</p></article><article class="card "><h3>9 Throttle Idle (600±25RPM)</h3><p><span class="k">何のため</span>絞りきってもエンジンが止まらないか。着陸前は絞るので大事</p><p><span class="k">どこを見る・OKの基準</span>地図12で600前後に安定</p></article><article class="card "><h3>10 Mixture CHECK</h3><p><span class="k">何のため</span>ミクスチャーが効くか（回転が反応するか）</p><p><span class="k">どこを見る・OKの基準</span>やり方は教官に確認（最後の章）</p></article><article class="card "><h3>11 Acceleration CHECK</h3><p><span class="k">何のため</span>アイドルから滑らかに加速するか</p><p><span class="k">どこを見る・OKの基準</span>スロットルを押して息つきなく回転が上がる</p></article><article class="card "><h3>12 Throttle SET</h3><p><span class="k">何のため</span>待機・地上滑走用の回転に戻す</p><p><span class="k">どこを見る・OKの基準</span>値は教官に確認</p></article><article class="card "><h3>13 FLT Controls CHECK</h3><p><span class="k">何のため</span>離陸直前にもう一度、自由に正しく動くか</p><p><span class="k">どこを見る・OKの基準</span>操縦輪をいっぱいに、舵面の向き</p></article><article class="card "><h3>14 Trim Tab SET FOR T/O</h3><p><span class="k">何のため</span>離陸に合ったトリム位置</p><p><span class="k">どこを見る・OKの基準</span>TAKEOFFの印</p></article><article class="card "><h3>15 Fuel Selector Valve BOTH ON</h3><p><span class="k">何のため</span>離陸前の最終確認</p><p><span class="k">どこを見る・OKの基準</span>BOTH</p></article><article class="card "><h3>16 Carb Heat COLD</h3><p><span class="k">何のため</span>離陸はフルパワーが要る。HOTだとパワーが落ちる</p><p><span class="k">どこを見る・OKの基準</span>地図20が押し込まれている</p></article><article class="card "><h3>17 Flaps SET FOR T/O</h3><p><span class="k">何のため</span>マニュアルでは短距離離陸が10°、通常離陸はフラップの指定なし（0°）</p><p><span class="k">どこを見る・OKの基準</span>フラップの指示と翼を目で</p></article><article class="card "><h3>18 FLT &amp; ENG Instrument CHECK</h3><p><span class="k">何のため</span>全計器の最終確認</p><p><span class="k">どこを見る・OKの基準</span>高度計・方位指示器・エンジン計器</p></article><article class="card "><h3>19 Doors LOCK</h3><p><span class="k">何のため</span>離陸中に開かないように</p><p><span class="k">どこを見る・OKの基準</span>ハンドルがロック位置</p></article><article class="card "><h3>20 Takeoff Briefing COMPLETED</h3><p><span class="k">何のため</span>何が起きたら何をするかを、起きる前に声に出して決めておく</p><p><span class="k">どこを見る・OKの基準</span>例：滑走路07、VR55KT・VY76KT、滑走中の異常は離陸中止、離陸後のエンジン停止はほぼ正面に不時着（型は教官に合わせる）</p></article><article class="card "><h3>21 Strobe Lights ON</h3><p><span class="k">何のため</span>他機から見えやすく</p><p><span class="k">どこを見る・OKの基準</span>ストロボのスイッチON</p></article><article class="card "><h3>22 Parking Brake Release</h3><p><span class="k">何のため</span>滑走路へ進む準備</p><p><span class="k">どこを見る・OKの基準</span>解除</p></article><article class="card "><h3>23 Landing Light ON（FINAL ITEM）</h3><p><span class="k">何のため</span>滑走路に入るとき。他機や鳥から見えやすく</p><p><span class="k">どこを見る・OKの基準</span>着陸灯のスイッチON</p></article><article class="card "><h3>24 Transponder ALT（FINAL ITEM）</h3><p><span class="k">何のため</span>管制レーダーに自機と高度を映す。成田が近いので特に大事</p><p><span class="k">どこを見る・OKの基準</span>地図17のつまみをALT</p></article><article class="card "><h3>25 Heading CHECK（FINAL ITEM）</h3><p><span class="k">何のため</span>方位指示器が滑走路の向きと合っているか</p><p><span class="k">どこを見る・OKの基準</span>滑走路07なら070°付近、25なら250°付近</p></article></div>
+</section>
+<section id="離陸後巡航降下N-3" class="">
+<h2>離陸後〜巡航〜降下（N-3）</h2>
+<p>空中のチェックリストが短いのは、まず飛ばすことが最優先だから。確認は安全な高度や余裕のある場面でまとめて行う。AFTER TAKE OFFが「400ft以上」になっているのもそのため。（　）の値はマニュアルの課目から埋めてある。</p>
+<h3>AFTER TAKE OFF（400ft以上）</h3>
+<div class="cards"><article class="card "><h3>1 Flaps UP</h3><p><span class="k">何のため</span>使っていたら上げる（短距離離陸など）</p><p><span class="k">どこを見る・OKの基準</span>60KT以上で。上げると機首が下がりやすい</p></article><article class="card "><h3>2 Mixture FULL RICH</h3><p><span class="k">何のため</span>低高度ではフルリッチ。濃い混合気はエンジンの冷却にもなる</p><p><span class="k">どこを見る・OKの基準</span>地図22が奥まで</p></article><article class="card "><h3>3 Throttle (2400RPM)</h3><p><span class="k">何のため</span>上昇パワーにする。マニュアルでは200ftで実施</p><p><span class="k">どこを見る・OKの基準</span>地図12で2400</p></article><article class="card "><h3>4 Landing &amp; Taxi Lights OFF</h3><p><span class="k">何のため</span>不要になった灯火を消す</p><p><span class="k">どこを見る・OKの基準</span>スイッチOFF</p></article><article class="card "><h3>5 Engine Instrument CHECK IN GREEN</h3><p><span class="k">何のため</span>フルパワー上昇でエンジンが熱くなりやすい</p><p><span class="k">どこを見る・OKの基準</span>地図8が緑</p></article></div>
+<h3>CLIMB</h3>
+<div class="cards"><article class="card "><h3>1 Airspeed (76KIAS)</h3><p><span class="k">何のため</span>VY＝最も早く高度を稼げる速度</p><p><span class="k">どこを見る・OKの基準</span>地図3、76KT、ピッチ約8°</p></article><article class="card "><h3>2 Throttle (2400RPM)</h3><p><span class="k">何のため</span>上昇パワーの維持</p><p><span class="k">どこを見る・OKの基準</span>地図12</p></article><article class="card "><h3>3 Mixture ADJUST</h3><p><span class="k">何のため</span>3000ft以上で空気が薄くなったら燃料を絞って適正に。それ以下はFULL RICH</p><p><span class="k">どこを見る・OKの基準</span>絞るときはEGT（地図15）を参考に、飛行規程の手順で</p></article></div>
+<h3>CRUISE</h3>
+<div class="cards"><article class="card "><h3>1 Cruise PWR (2200RPM)</h3><p><span class="k">何のため</span>巡航パワー。水平直線飛行は95KT・2200RPM</p><p><span class="k">どこを見る・OKの基準</span>地図12</p></article><article class="card "><h3>2 Fuel Quantity CHECK</h3><p><span class="k">何のため</span>燃料の減り方が予定どおりか</p><p><span class="k">どこを見る・OKの基準</span>地図7</p></article><article class="card "><h3>3 Fuel Selector Valves PROPER TANK</h3><p><span class="k">何のため</span>適切なタンクを使っているか（この機体は通常BOTH）</p><p><span class="k">どこを見る・OKの基準</span>座席の間のセレクター</p></article><article class="card "><h3>4 Engine Instruments CHECK IN GREEN</h3><p><span class="k">何のため</span>巡航中の異常の早期発見</p><p><span class="k">どこを見る・OKの基準</span>地図8と13</p></article><article class="card "><h3>5 Gyro Instruments Reset</h3><p><span class="k">何のため</span>方位指示器はジャイロの性質で時間とともにずれる</p><p><span class="k">どこを見る・OKの基準</span>水平・等速で飛んでいるときに、10を25（磁気コンパス）に合わせる。目安15分ごと</p></article></div>
+<p>CRUISEの下の表は、気圧高度と回転数から出力（%BHP）・真対気速度（KTAS）・燃料消費（GPH＝ガロン/時）を引くもの。例：2000ft・標準気温・2200RPMなら出力55%、97KTAS、6.3GPH（約24リットル/時）。</p>
+<h3>DESCENT</h3>
+<div class="cards"><article class="card "><h3>1 Fuel Selector Valve BOTH ON</h3><p><span class="k">何のため</span>着陸に向けた燃料の確認</p><p><span class="k">どこを見る・OKの基準</span>BOTH</p></article><article class="card "><h3>2 Mixture ADJUST</h3><p><span class="k">何のため</span>降りると空気が濃くなるので燃料も濃くする。3000ft以下はFULL RICH</p><p><span class="k">どこを見る・OKの基準</span>地図22</p></article><article class="card "><h3>3 Carb Heat As Required</h3><p><span class="k">何のため</span>パワーを絞るとキャブレターが冷えて氷がつきやすい。2000RPM以下はHOT</p><p><span class="k">どこを見る・OKの基準</span>地図20。マニュアルの降下はHOT</p></article><article class="card "><h3>4 Throttle (1800RPM)</h3><p><span class="k">何のため</span>降下パワー。マニュアルの降下は1800RPM・95KT</p><p><span class="k">どこを見る・OKの基準</span>地図12</p></article></div>
+</section>
+<section id="進入着陸駐機N-4" class="">
+<h2>進入〜着陸〜駐機（N-4）</h2>
+<p>着陸に向けては「いつでもやり直せる（ゴーアラウンドできる）状態を作る」のが軸。だから最終進入でFULL RICHとCarb Heat COLDを確かめる。マニュアルでは、ダウンウインド（900ft・2200RPM）でBEFORE LANDING、最終進入でFINAL ITEM。</p>
+<h3>APPROACH（場周に入る前）</h3>
+<div class="cards"><article class="card "><h3>1 Seat Belt &amp; Shoulder Harness FASTEN</h3><p><span class="k">何のため</span>着陸の衝撃や揺れに備える</p><p><span class="k">どこを見る・OKの基準</span>腰・肩ベルト</p></article><article class="card "><h3>2 Altimeter Set (　in)</h3><p><span class="k">何のため</span>最新の気圧値で場周高度（900ft）を正しく守る</p><p><span class="k">どこを見る・OKの基準</span>Landing Informationで得たQNHを地図5に</p></article><article class="card "><h3>3 Fuel Selector Valve BOTH ON</h3><p><span class="k">何のため</span>着陸とゴーアラウンドに備えた燃料の確認</p><p><span class="k">どこを見る・OKの基準</span>BOTH</p></article><article class="card "><h3>4 Mixture FULL RICH</h3><p><span class="k">何のため</span>低高度ではフルリッチ</p><p><span class="k">どこを見る・OKの基準</span>地図22が奥まで</p></article><article class="card "><h3>5 Landing Briefing COMPLETED</h3><p><span class="k">何のため</span>使用滑走路・風・場周への入り方・ゴーアラウンドの判断を先に決める</p><p><span class="k">どこを見る・OKの基準</span>声に出して共有</p></article></div>
+<h3>BEFORE LANDING（ダウンウインド）</h3>
+<div class="cards"><article class="card "><h3>1 Fuel Quantity CHECK</h3><p><span class="k">何のため</span>ゴーアラウンドしても足りる燃料があるか</p><p><span class="k">どこを見る・OKの基準</span>地図7</p></article><article class="card "><h3>2 Fuel Selector Valves BOTH ON</h3><p><span class="k">何のため</span>再確認</p><p><span class="k">どこを見る・OKの基準</span>BOTH</p></article><article class="card "><h3>3 Mixture FULL RICH</h3><p><span class="k">何のため</span>再確認</p><p><span class="k">どこを見る・OKの基準</span>地図22</p></article><article class="card "><h3>4 Landing &amp; Taxi Lights ON</h3><p><span class="k">何のため</span>場周の他機から見えやすく</p><p><span class="k">どこを見る・OKの基準</span>スイッチON</p></article></div>
+<h3>BEFORE LANDING（FINAL ITEM＝最終進入）</h3>
+<div class="cards"><article class="card "><h3>1 Mixture FULL RICH</h3><p><span class="k">何のため</span>いつでもフルパワーを出せるように</p><p><span class="k">どこを見る・OKの基準</span>地図22</p></article><article class="card "><h3>2 Carb Heat COLD</h3><p><span class="k">何のため</span>ゴーアラウンドでフルパワーが要るため。HOTのままだとパワーが足りない</p><p><span class="k">どこを見る・OKの基準</span>地図20が押し込まれている</p></article><article class="card "><h3>3 Flaps SET</h3><p><span class="k">何のため</span>着陸のフラップ（通常着陸30°、65KT）</p><p><span class="k">どこを見る・OKの基準</span>下げる前に速度確認：10°は110KT以下、20°・30°は85KT以下（コール「BELOW 85KT」）</p></article></div>
+<h3>AFTER LANDING（滑走路を出てから）</h3>
+<div class="cards"><article class="card "><h3>1 Flaps UP</h3><p><span class="k">何のため</span>地上では不要。揚力を減らし、跳ねた小石からフラップを守る</p><p><span class="k">どこを見る・OKの基準</span>翼を目で</p></article><article class="card "><h3>2 Transponder OFF</h3><p><span class="k">何のため</span>地上ではレーダーに映さない</p><p><span class="k">どこを見る・OKの基準</span>地図17</p></article><article class="card "><h3>3 Carb Heat VERIFY COLD</h3><p><span class="k">何のため</span>地上ではフィルターなしの空気でゴミを吸わない</p><p><span class="k">どこを見る・OKの基準</span>地図20</p></article><article class="card "><h3>4 Landing Light OFF</h3><p><span class="k">何のため</span>不要になった灯火を消す</p><p><span class="k">どこを見る・OKの基準</span>スイッチOFF</p></article><article class="card "><h3>5 Trim SET FOR T/O</h3><p><span class="k">何のため</span>次の離陸に備え、戻し忘れを防ぐ</p><p><span class="k">どこを見る・OKの基準</span>TAKEOFFの印</p></article></div>
+<h3>PARKING</h3>
+<div class="cards"><article class="card "><h3>1 Parking Brake SET</h3><p><span class="k">何のため</span>停止中に動かないように</p><p><span class="k">どこを見る・OKの基準</span>ブレーキ</p></article><article class="card "><h3>2 Throttle 1000RPM</h3><p><span class="k">何のため</span>停止前の回転</p><p><span class="k">どこを見る・OKの基準</span>地図12</p></article><article class="card "><h3>3 Taxi Light OFF / 4 Strobe Lights OFF</h3><p><span class="k">何のため</span>不要な灯火を消す（ビーコンはまだ消さない）</p><p><span class="k">どこを見る・OKの基準</span>スイッチOFF</p></article><article class="card "><h3>5 Radio &amp; NAV Aids ALL OFF / 6 Avionics Master S/W OFF</h3><p><span class="k">何のため</span>エンジン停止時の電圧の揺れから無線機を守る</p><p><span class="k">どこを見る・OKの基準</span>無線機の表示が消える</p></article><article class="card "><h3>7 Throttle IDLE</h3><p><span class="k">何のため</span>次の点検のために回転を下げる</p><p><span class="k">どこを見る・OKの基準</span>地図12</p></article><article class="card "><h3>8 Ground Earth CHECK</h3><p><span class="k">何のため</span>イグニッションOFFで点火が本当に切れるか（アースが効いているか）。効いていないと、駐機中にプロペラを動かしただけでエンジンがかかる</p><p><span class="k">どこを見る・OKの基準</span>一般には「一瞬キーをOFF→回転が落ちかけるのを確認→すぐBOTH」。手順は教官に確認</p></article><article class="card "><h3>9 Throttle 1000RPM</h3><p><span class="k">何のため</span>停止前の回転に戻す</p><p><span class="k">どこを見る・OKの基準</span>地図12</p></article><article class="card "><h3>11 Mixture IDLE CUT OFF</h3><p><span class="k">何のため</span>燃料を断ってエンジンを止める。点火で止めるより、シリンダーに燃料が残らず安全</p><p><span class="k">どこを見る・OKの基準</span>地図22をいっぱいに引く</p></article><article class="card "><h3>12 Ignition S/W OFF</h3><p><span class="k">何のため</span>止まってから点火を切る</p><p><span class="k">どこを見る・OKの基準</span>キーをOFFにして抜く</p></article><article class="card "><h3>13 BCN Light OFF</h3><p><span class="k">何のため</span>「エンジンが止まった、近づいてよい」の合図</p><p><span class="k">どこを見る・OKの基準</span>スイッチOFF</p></article><article class="card "><h3>14 Master S/W OFF / 15 All Switches ALL OFF</h3><p><span class="k">何のため</span>バッテリー上がり防止</p><p><span class="k">どこを見る・OKの基準</span>全部OFF</p></article><article class="card "><h3>16 Chocks IN PLACE</h3><p><span class="k">何のため</span>車輪止めで機体を固定</p><p><span class="k">どこを見る・OKの基準</span>前輪に車輪止め</p></article><article class="card "><h3>17 Parking Brake Release</h3><p><span class="k">何のため</span>車輪止めをしたら解除。ブレーキの固着を防ぎ、機体を押して動かせるように</p><p><span class="k">どこを見る・OKの基準</span>解除</p></article></div>
+<p>始動の逆をたどると覚えやすい：灯火・無線を切る→燃料を切って止める→点火を切る→ビーコンを消す→電源を切る。</p>
+</section>
+<section id="緊急手順EM-1--EM-2" class="alert">
+<h2>緊急手順（EM-1 / EM-2）</h2>
+<p>緊急手順は「まず飛行を安定させ、原因になりやすいものを順に潰し、だめなら被害を最小にする」という3段構え。項目の意味より、順番の理由をつかむと覚えやすい。</p>
+<h3>ENGINE RESTART（エンジン停止・不調）</h3>
+<ul><li>65KIAS＝最良滑空速度。最も遠くまで滑空でき、考える時間と不時着場の選択肢が最大になる。</li></ul>
+<ul><li>その後は「止まる原因」を順に潰す：Carb Heat HOT（キャブアイス）→ Fuel BOTH・Mixture RICH（燃料）→ Ignition BOTH（点火が片側になっていないか）→ Primer IN &amp; LOCKED（プライマーが抜けて燃料が濃すぎないか）→ プロペラが止まっていたらSTART。</li></ul>
+<ul><li>マニュアルでは、不時着場を選んだ後、対地1000ft以上で、チェックリストを見ずに実施する。</li></ul>
+<h3>FORCED LANDING（不時着）</h3>
+<ul><li>ELT ARMと通報（チェックリストはPAN PAN、マニュアルの訓練手順はMAYDAY・可能ならトランスポンダー7700）で、助けが来る準備をする。</li></ul>
+<ul><li>Mixture CUT OFF・Fuel OFF・Ignition OFF＝燃料と火花を断ち、接地後の火災を防ぐ。</li></ul>
+<ul><li>Wing Flaps USE → Master S/W OFFの順には意味がある。C172のフラップは電動なので、電源を切る前に下ろす。</li></ul>
+<ul><li>Doors UNLATCH＝衝撃でドア枠が歪んで開かなくなるのを防ぎ、脱出路を確保する。</li></ul>
+<ul><li>Tail First＝機首を少し上げ、できるだけ遅い速度で接地する。</li></ul>
+<ul><li>滑空距離のグラフ（65KIAS・プロペラ空転・フラップ上げ・無風）では、対地高度1000ftごとに約1.6NM（約3km）進める。訓練空域の2000ftからなら約3.3NM（約6km）が届く範囲。</li></ul>
+<h3>ENGINE FIRE IN FLIGHT（エンジン火災）</h3>
+<ul><li>燃料を断つ（Mixture CUT OFF・Fuel OFF）→ 電気を切る → Cabin Heat &amp; Air OFF（暖房はエンジン周りの空気を取り込むので、煙や炎の入口を閉じる）。</li></ul>
+<ul><li>100KIAS＝速度を上げて炎を吹き消す。そのまま不時着へ。</li></ul>
+<ul><li>マニュアル：火災の場合は再始動をしてはならない。</li></ul>
+<h3>ELECTRICAL FIRE / WING FIRE / CABIN FIRE（電気・翼・客室の火災）</h3>
+<ul><li>共通するのは「発火源の電気を切る→空気の流れを止める（Vents・Cabin Air・Heat CLOSED）→消火器→すぐ着陸」。</li></ul>
+<ul><li>翼の火災は、翼の中を通る電気（航法灯・ピトーヒーター・ストロボ）だけを切る。</li></ul>
+<h3>LOW VOLTAGE LIGHT（低電圧灯の点灯）</h3>
+<ul><li>意味：発電機が発電しておらず、バッテリーだけで動いている。</li></ul>
+<ul><li>1〜6は「リセットで復帰するか」の試行：無線OFF（電圧の揺れから守る）→発電機のブレーカー確認→マスターOFF→ON→灯が消えたら無線ON。</li></ul>
+<ul><li>それでも点灯したら、発電機を切り、不要な機器を切ってバッテリーを長持ちさせ、飛行を切り上げる。</li></ul>
+<ul><li>この状態でもエンジンは止まらない。点火はマグネトが自分で発電していて、電気系統と独立しているから。困るのは無線と電動フラップ。</li></ul>
+</section>
+<section id="次回教官に確認したいこと" class="">
+<h2>次回、教官に確認したいこと</h2>
+<p>チェックリストだけではやり方が決まらない点と、写真から推測した点。答えが分かったらチェックして、上の表を書き換える。</p>
+<ul><li>☐ ランナップ10「Mixture CHECK」の具体的なやり方（どこまで絞り、何を見るか）</li></ul>
+<ul><li>☐ ランナップ12「Throttle SET」の回転数</li></ul>
+<ul><li>☐ 駐機8「Ground Earth CHECK」の手順（キーをOFFにする長さ・回転数）</li></ul>
+<ul><li>☐ プライマーの回数の目安（気温別）</li></ul>
+<ul><li>☐ 失速警報の点検のやり方</li></ul>
+<ul><li>☐ JA3946の着陸灯・タキシー灯の位置（機首か左翼前縁か）</li></ul>
+<p>製造番号17274553は1981年型の範囲（17274010〜17275034）。この年の172Pは着陸灯が機首で、左翼前縁になるのは1982年型（17275035以降）。外部点検の写真が、その機首の配置。移設の有無だけ実機で見る。</p>
+<ul><li>☐ 地図の位置の答え合わせ（特に2サクションゲージ、13電流計、20〜22キャブヒート・スロットル・ミクスチャー）と、写真にないマスタースイッチ・プライマー・ブレーカー・フラップスイッチの場所</li></ul>
+<ul><li>☐ 離陸ブリーフィング・着陸ブリーフィングの型（クラブで決まった言い方があるか）</li></ul>
+<ul><li>☐ 不時着の通報：チェックリストのPAN PANとマニュアルのMAYDAY、どちらで練習するか</li></ul>
+<ul><li>☐ 番号の抜け：BEFORE STARTING ENGINEは「5」が2つ、STARTING ENGINEは「11」、PARKINGは「10」がない。誤植か、項目が消えているのか</li></ul>
+<p>このノートは理解のための解説。実際の操作は、JMGCのチェックリストと教官の指示が優先。</p>
+</section>
+<section id="出典" class="">
+<h2>出典</h2>
+<ul><li>JMGC「飛行機トレーニング・マニュアル」（共有されたPowerPoint、Rev.2022/04/25。チェックリストは2020年12月版）：チェックリスト本体、計器板の写真、各課目の速度・回転数、MixtureとCarb Heatのルール、不時着訓練の手順</li></ul>
+<ul><li>：C172Pの着陸灯が1982年モデルから機首→主翼に移った件</li></ul>
+<ul><li>：外部点検の静圧孔（左側）、左翼のベント・失速警報（ハンカチで吸う）、オイル5〜8クォート</li></ul>
+<ul><li>：始動後1200RPMで暖機、その後1000RPM</li></ul>
+<p>外部点検の写真（Wikimedia Commons。説明の範囲でトリミングした以外は改変していない）。機首の灯・プロペラ・吸気口：Kelownian Pilot、CC BY-SA 3.0。前輪：Bin im Garten、CC BY-SA 3.0。静圧孔：Bin im Garten、CC BY-SA 3.0（D-EALE）。ピトー管：Cjp24、CC BY-SA 4.0（F-BXZQ、1975年製172M）。尾翼：Elliebutton408、パブリックドメイン。給油：Matti Blume、CC BY-SA 4.0。位置の図2枚はこのノート用に作成。製造年の範囲は Cessna 172 serial number listing（1981年型 17274010〜17275034）。</p>
+</section>
+</main>
+<footer>リンクを知っている人が開けます。検索エンジンには出さない設定です。</footer>
+<script>
+const q = document.getElementById("q");
+const aliases = [
+  ["マグネト", "magneto"],
+  ["ミクスチャ", "mixture"],
+  ["キャブ", "carb"],
+  ["フラップ", "flap"],
+  ["スロットル", "throttle"],
+  ["ピトー", "pitot"],
+  ["静圧", "static"],
+  ["トリム", "trim"],
+  ["燃料", "fuel"],
+  ["点火", "ignition"],
+  ["プライマー", "primer"]
+];
+function needlesOf(raw) {
+  const needle = raw.trim().toLowerCase();
+  if (!needle) return [];
+  const extra = aliases.filter(([ja]) => needle.includes(ja)).map(([, en]) => en);
+  return [needle, ...extra];
+}
+function matches(text, needles) {
+  if (!needles.length) return true;
+  const t = text.toLowerCase();
+  return needles.some(n => t.includes(n));
+}
+q.addEventListener("input", () => {
+  const needles = needlesOf(q.value);
+  document.querySelectorAll("main section").forEach(sec => {
+    let any = matches(sec.querySelector("h2").textContent, needles);
+    sec.querySelectorAll(".card").forEach(card => {
+      const hit = matches(card.textContent, needles);
+      card.classList.toggle("hidden", !hit);
+      if (hit) any = true;
+    });
+    sec.querySelectorAll("p, li").forEach(el => {
+      if (el.closest(".card")) return;
+      const hit = matches(el.textContent, needles);
+      el.classList.toggle("hidden", !hit);
+      if (hit) any = true;
+    });
+    sec.classList.toggle("hidden", !any);
+  });
+});
+</script>
+</body>
+</html>

@@ -86,7 +86,20 @@ h2 {
 h3 {
   margin: 1.15rem 0 0.35rem;
   font-size: 1.05rem;
+  scroll-margin-top: 160px;
 }
+.steps { list-style: none; padding: 0; margin: 0.6rem 0 1rem; }
+.steps > li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 0 0 12px;
+}
+.steps h4 { margin: 0 0 8px; font-size: 1.05rem; }
+.steps p { margin: 8px 0 0; }
+.steps figure { margin: 8px 0 0; }
 p { margin: 0.55rem 0; }
 .byline { color: var(--muted); font-size: 0.9rem; }
 ul { margin: 0.4rem 0 0.8rem; padding-left: 1.2rem; }
@@ -130,7 +143,7 @@ footer {
 <header>
   <h1>C172P　JA3946</h1>
   <input id="q" type="search" placeholder="項目を検索（例: 燃料、静圧、マグネト）" enterkeyhint="search">
-  <nav><a href="#読み方と全体像">読み方と全体像</a><a href="#コックピットのどこを見るか">コックピットのどこを見るか</a><a href="#外部点検P-1--P-2">外部点検（P-1 / P-2）</a><a href="#場所が分かりにくい部品">場所が分かりにくい部品</a><a href="#エンジン始動までN-1">エンジン始動まで（N-1）</a><a href="#始動後地上滑走N-1">始動後〜地上滑走（N-1）</a><a href="#離陸前ランナップN-2">離陸前＝ランナップ（N-2）</a><a href="#離陸後巡航降下N-3">離陸後〜巡航〜降下（N-3）</a><a href="#進入着陸駐機N-4">進入〜着陸〜駐機（N-4）</a><a href="#緊急手順EM-1--EM-2">緊急手順（EM-1 / EM-2）</a><a href="#次回教官に確認したいこと">次回、教官に確認したいこと</a><a href="#出典">出典</a></nav>
+  <nav><a href="#読み方と全体像">読み方と全体像</a><a href="#コックピットのどこを見るか">コックピットのどこを見るか</a><a href="#外部点検P-1--P-2">外部点検（P-1 / P-2）</a><a href="#外でやること">外でやること</a><a href="#場所が分かりにくい部品">場所が分かりにくい部品</a><a href="#エンジン始動までN-1">エンジン始動まで（N-1）</a><a href="#始動後地上滑走N-1">始動後〜地上滑走（N-1）</a><a href="#離陸前ランナップN-2">離陸前＝ランナップ（N-2）</a><a href="#離陸後巡航降下N-3">離陸後〜巡航〜降下（N-3）</a><a href="#進入着陸駐機N-4">進入〜着陸〜駐機（N-4）</a><a href="#緊急手順EM-1--EM-2">緊急手順（EM-1 / EM-2）</a><a href="#次回教官に確認したいこと">次回、教官に確認したいこと</a><a href="#出典">出典</a></nav>
 </header>
 <main>
 <p class="byline">Oct 22, 2026 · @Wataru Oshima　理解用。操作はクラブのチェックリストと教官が優先。</p>
@@ -164,6 +177,104 @@ footer {
 <h2>外部点検（P-1 / P-2）</h2>
 <p>外部点検は「地上でしか見つけられない不具合を、決まった順路で漏れなく見る」作業。①キャビン→②尾翼→③④右翼→⑤機首→⑥〜⑧左翼と一周する。順路を固定するのは、毎回同じ順で見れば抜けが自然に気づけるから。</p>
 <figure><img src="img/02.png" alt="図"></figure>
+<h3 id="外でやること">外でやること</h3>
+<p>外で手を動かす項目を、一周の順に並べた。点火スイッチはOFF、パーキングブレーキをかけてから歩く。プロペラの回転面には入らない。写真はJA3946そのものではない。ガストロックの形は運航者によって違い、付いていなければその項目は済んでいる。</p>
+<ol class="steps">
+<li>
+<h4>荷物室ドア　SECURE</h4>
+<p>機体の左後方。ラッチがロック位置か見て、扉を軽く押す。浮いてこなければ閉まっている。</p>
+<figure><img src="img/act-baggage.jpg" alt="荷物室ドアを押して施錠を確認する"></figure>
+</li>
+<li>
+<h4>② Rudder Gust Lock　REMOVE</h4>
+<p>方向舵に付いている板や金具を外して、機内にしまう。風で舵がバタつくのを止める道具なので、付いたままでは舵が動かない。この写真の機体は172Sで、板の形はJA3946と違うことがある。</p>
+<figure><img src="img/act-gust.jpg" alt="方向舵のガストロックを外す"></figure>
+</li>
+<li>
+<h4>② Tail Tie-Down　DISCONNECT</h4>
+<p>尾の下の鎖やロープを、機体側と地面側の両方から外す。輪の中に残したままにしない。</p>
+<figure><img src="img/act-tailtie.jpg" alt="尾部の係留を外す"></figure>
+</li>
+<li>
+<h4>② Control Surfaces　CHECK FREE</h4>
+<p>ロックと係留を外してから、昇降舵の後縁を手で上下、方向舵の後縁を手で左右に、止まるところまで動かす。途中で引っかからず、ヒンジに欠けがないこと。トリムタブは手でこじらない。</p>
+<figure><img src="img/act-surfaces.jpg" alt="昇降舵と方向舵を手で動かす"></figure>
+</li>
+<li>
+<h4>③ Aileron　CHECK FREE</h4>
+<p>右翼の補助翼の後縁を手で上げ下げする。反対側の補助翼は逆に動く。ヒンジと表面のヒビを見る。フラップは電動なので、手でこじらない。左翼でも同じことをする。</p>
+<figure><img src="img/act-aileron.jpg" alt="補助翼の後縁を手で上下する"></figure>
+</li>
+<li>
+<h4>④ Wing Tie-Down　DISCONNECT</h4>
+<p>支柱の近く、翼の下面のリングからロープを外す。地面の金具からも外し、翼の下に置きっぱなしにしない。左翼も同じ。</p>
+<figure><img src="img/act-wingtie.jpg" alt="主翼の係留ロープをリングから外す"></figure>
+</li>
+<li>
+<h4>④ Main Wheel Tire　CHECK</h4>
+<p>溝が残っていて、コードが見えていない。極端に潰れていない。車輪の内側に赤い油がにじんでいたらブレーキ漏れ。左右とも見る。</p>
+<figure><img src="img/act-tire.jpg" alt="主輪の溝とブレーキのにじみを見る"></figure>
+</li>
+<li>
+<h4>④ Fuel Tank Sump Valve　DRAIN</h4>
+<p>翼の下面、胴体寄りの弁を、カップの棒で上に押して燃料を抜く。100LLは青く透明。底に水の玉が出たら、出なくなるまで抜く。その日の最初と給油後。左右とも。これは機首のストレーナーとは別の作業。</p>
+<figure><img src="img/act-sump.jpg" alt="翼のサンプ弁をカップの棒で押して抜く"></figure>
+</li>
+<li>
+<h4>④ Fuel Quantity　CHECK VISUAL／Filler Cap　SECURE</h4>
+<p>翼の上でキャップを開け、燃料の量を目で見る。キャップを戻してロックし、浮いていないことを確認する。左右とも。</p>
+<figure><img src="img/act-fuel.jpg" alt="翼上面のキャップを開けて燃料の量を見る"></figure>
+</li>
+<li>
+<h4>⑤ Engine Oil　CHECK　min 5 QT</h4>
+<p>カウル上面の扉を開ける。オイルの棒を抜いて拭き、差し戻してから読む。5クォート未満は飛ばない。容量は8クォート。読み終わったらキャップと扉を閉める。</p>
+<figure><img src="img/act-oil.jpg" alt="カウル上面の扉からオイルを計量する"></figure>
+</li>
+<li>
+<h4>⑤ Fuel Strainer Drain　CHECK</h4>
+<p>172Pは、オイル点検口の中のノブを数秒引く。燃料はカウルの下から出る。青く透明で、底に水がないこと。見たらノブを押し戻す。翼のサンプのような、下の弁をカップで突く方式ではない。</p>
+<figure><img src="img/act-strainer.jpg" alt="オイル点検口のノブを引いてストレーナーを抜く"></figure>
+</li>
+<li>
+<h4>⑤ Propeller／Spinner／Landing Light／Carburetor Air Filter</h4>
+<p>プロペラは回さない。前縁の欠け、スピナーの割れ、カウルの灯のレンズの割れ、下の吸気口の中の鳥やゴミを見る。排気管は吸気口ではない。</p>
+<figure><img src="img/act-nosefront.jpg" alt="プロペラと機首の灯と下の吸気口を見る"></figure>
+</li>
+<li>
+<h4>⑤ Nose Strut／Nose Tire</h4>
+<p>前脚のクロムの筒が、いつもどおり出ているか。タイヤの溝と、ずれを示す印を見る。</p>
+<figure><img src="img/act-nosestrut.jpg" alt="前脚の支柱とタイヤを見る"></figure>
+</li>
+<li>
+<h4>⑤ Nose Tie-Down　DISCONNECT</h4>
+<p>前輪まわりの輪からロープを外す。付いていなければ済み。</p>
+<figure><img src="img/act-nosetie.jpg" alt="機首の係留を外す"></figure>
+</li>
+<li>
+<h4>⑤ Static Port　CHECK</h4>
+<p>左の胴体、ドアの前。ストライプ付近の小さい穴が開いているか見る。棒や指でつついて塞がない。写真は古い172の丸い金具で、JA3946の見た目とは違うことがある。</p>
+<figure><img src="img/act-static.jpg" alt="静圧孔が開いているか見る"></figure>
+</li>
+<li>
+<h4>⑦ Pitot Tube Cover　REMOVE and CHECK</h4>
+<p>左翼の下面、前向きの管。赤いカバーが付いていたら外して機内へ。管の先の穴が開いている。右翼にはない。写真は1975年製の172M。</p>
+<figure><img src="img/act-pitot.jpg" alt="ピトー管のカバーを外し穴を見る"></figure>
+</li>
+<li>
+<h4>⑦ Fuel Tank Vent　CHECK</h4>
+<p>左翼の下面、支柱の近くで下向きに曲がった細い管。つぶれていない、虫が詰まっていない。ピトー管とは別の部品。右翼にはない。</p>
+<figure><img src="img/act-vent.jpg" alt="左翼下面の燃料ベントを見る"></figure>
+</li>
+<li>
+<h4>⑦ Stall Warning　CHECK</h4>
+<p>左翼の前縁にある細い穴に布を当てて吸う。機内のホーンが鳴れば通っている。穴を道具でつつくのはしない。やり方の最終確認は教官。右翼にはない。</p>
+<figure><img src="img/act-stall.jpg" alt="失速警報の開口に布を当てて吸う"></figure>
+</li>
+<li>
+<h4>左翼の残りは右翼と同じ</h4>
+<p>左翼でも、係留を外す、タイヤとブレーキ、サンプ、燃料の量とキャップ、補助翼の自由を、右翼と同じ手の動きで見る。左翼だけの追加は、上のピトー管・燃料ベント・失速警報。</p>
+</li>
+</ol>
 <h3>写真で見る場所</h3>
 <p>外部点検は、乗ってからでは見えない場所を、決まった順で見る作業。下の2枚の図が「どこか」、そのあとの写真が「近づくとどう見えるか」。図は172Pの標準的な位置で、写真はJA3946そのものではない。場所の考え方が同じ別の172を使っている。</p>
 <p>JA3946の製造番号は17274553。172Pの1981年型は17274010〜17275034なので、この機体は1981年型の範囲に入る。この年は着陸灯が機首にあり、左翼前縁に移るのは1982年型（17275035以降）。後から移していないかは、次に実機で確認する。</p>
@@ -310,7 +421,7 @@ footer {
 <ul><li>：C172Pの着陸灯が1982年モデルから機首→主翼に移った件</li></ul>
 <ul><li>：外部点検の静圧孔（左側）、左翼のベント・失速警報（ハンカチで吸う）、オイル5〜8クォート</li></ul>
 <ul><li>：始動後1200RPMで暖機、その後1000RPM</li></ul>
-<p>外部点検の写真（Wikimedia Commons。説明の範囲でトリミングした以外は改変していない）。機首の灯・プロペラ・吸気口：Kelownian Pilot、CC BY-SA 3.0。前輪：Bin im Garten、CC BY-SA 3.0。静圧孔：Bin im Garten、CC BY-SA 3.0（D-EALE）。ピトー管：Cjp24、CC BY-SA 4.0（F-BXZQ、1975年製172M）。尾翼：Elliebutton408、パブリックドメイン。給油：Matti Blume、CC BY-SA 4.0。位置の図2枚はこのノート用に作成。製造年の範囲は Cessna 172 serial number listing（1981年型 17274010〜17275034）。</p>
+<p>外部点検の写真（Wikimedia Commons。場所の写真はトリミングのみ）。機首の灯・プロペラ・吸気口：Kelownian Pilot、CC BY-SA 3.0。前輪：Bin im Garten、CC BY-SA 3.0。静圧孔：Bin im Garten、CC BY-SA 3.0（D-EALE）。ピトー管：Cjp24、CC BY-SA 4.0（F-BXZQ、1975年製172M）。尾翼：Elliebutton408、パブリックドメイン。給油：Matti Blume、CC BY-SA 4.0。ガストロックと尾部係留の写真：Enrique Galeano Morales、CC BY 2.0（Cessna 172S N447ER、Embry-Riddle。JA3946ではない。外す場所と動かす向きの矢印を足した）。手の動きの図はこのノート用に作成。位置の図2枚もこのノート用に作成。製造年の範囲は Cessna 172 serial number listing（1981年型 17274010〜17275034）。</p>
 </section>
 </main>
 <footer>リンクを知っている人が開けます。検索エンジンには出さない設定です。</footer>
